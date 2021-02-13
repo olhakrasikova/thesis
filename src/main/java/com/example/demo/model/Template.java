@@ -7,21 +7,25 @@ import java.util.UUID;
 public class Template {
 
     private final UUID id;
-    private final int imgNum;
+    private TemplateData templateData;
 
 
 
-    public Template(@JsonProperty("id") UUID id,
-                    @JsonProperty("imgNum")int imgNum) // numbers of pre-made elements need to be pasted too
+    public Template(@JsonProperty("did") UUID id,
+                    @JsonProperty("templateData") TemplateData templateData) // numbers of pre-made elements need to be pasted too
     {
         this.id = id;
-        this.imgNum = imgNum;
+        this.templateData = templateData;
     }
 
     public UUID getId() {
         return id;
     }
 
-    public int getImgNum() { return imgNum; }
+
+    public TemplateData getTemplateData() {
+        return templateData;
+    }
+
 }
 

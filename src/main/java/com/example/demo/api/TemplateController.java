@@ -1,6 +1,7 @@
 package com.example.demo.api;
 
 import com.example.demo.model.Template;
+import com.example.demo.model.TemplateData;
 import com.example.demo.service.TemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,15 +23,16 @@ public class TemplateController {
     }
 
     @PostMapping
-    public void addTemplate(@RequestBody Template template)
+    public void addTemplate(@RequestBody TemplateData data) throws Exception
     {
-        templateService.addTemplate(template);
+        templateService.addTemplate(data);
     }
 
     @GetMapping
-    public List<Template> getAllTemplates()
+    @ResponseBody
+    public List<Template> getTemplates() throws Exception
     {
-        return templateService.getAllTemplates();
+         return templateService.getTemplates();
     }
 
 }
