@@ -1,5 +1,5 @@
 package com.example.demo.model;
 
 public enum ImgStyle {
-    ONE
+    FULL, SQUARE, ROUND, OVAL, TRIANGLE
 }
