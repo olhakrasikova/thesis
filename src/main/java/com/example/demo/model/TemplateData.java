@@ -13,6 +13,9 @@ public class TemplateData {
     private FontFamily titleFontFamily;
     private FontFamily footerFontFamily;
 
+
+    private TemplateType templateType;
+
     public TemplateData(@JsonProperty("category") TemplateCategory category,
                         @JsonProperty("imgSrc") String imgSrc,
                         @JsonProperty("imgStyle") ImgStyle imgStyle,
@@ -20,7 +23,8 @@ public class TemplateData {
                         @JsonProperty("textFontFamily") FontFamily textFontFamily,
                         @JsonProperty("darkTheme") Boolean darkTheme,
                         @JsonProperty("titleFontFamily") FontFamily titleFontFamily,
-                        @JsonProperty("footerFontFamily") FontFamily footerFontFamily
+                        @JsonProperty("footerFontFamily") FontFamily footerFontFamily,
+                        @JsonProperty("templateType") TemplateType templateType
                         )
     {
         this.category = category;
@@ -31,7 +35,7 @@ public class TemplateData {
         this.darkTheme = darkTheme;
         this.titleFontFamily = titleFontFamily;
         this.footerFontFamily = footerFontFamily;
-
+        this.templateType = templateType;
     }
 
     public TemplateCategory getCategory() {
@@ -64,5 +68,9 @@ public class TemplateData {
 
     public FontFamily getFooterFontFamily() {
         return footerFontFamily;
+    }
+
+    public TemplateType getTemplateType() {
+        return templateType;
     }
 }

@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.UUID;
 
 import java.sql.*;
-import java.sql.Date;
-import java.util.*;
 
 @Repository("templateDAO")
 public class TemplateDao {
@@ -21,7 +19,7 @@ public class TemplateDao {
 
     public static final String INSERT_TEMPLATE =
             "INSERT INTO \"templateData\" (id, category, imgsrc, imgStyle, fontSize, textFontFamily, " +
-                    "darkTheme, titleFontFamily, footerFontFamily) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    "darkTheme, titleFontFamily, footerFontFamily, templateType) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     public static final String GET_TEMPLATES =
             "SELECT * FROM \"templateData\"";
@@ -46,6 +44,7 @@ public class TemplateDao {
             ps.setBoolean(7, data.getDarkTheme());
             ps.setString(8, data.getTitleFontFamily().toString());
             ps.setString(9, data.getFooterFontFamily().toString());
+            ps.setString(10, data.getTemplateType().toString());
 
             ps.executeUpdate();
         } } catch (SQLException e) {
@@ -68,7 +67,8 @@ public class TemplateDao {
                                 Enum.valueOf(FontFamily.class, rs.getString(6)),
                                 rs.getBoolean(7),
                                 Enum.valueOf(FontFamily.class, rs.getString(8)),
-                                Enum.valueOf(FontFamily.class, rs.getString(9))
+                                Enum.valueOf(FontFamily.class, rs.getString(9)),
+                                Enum.valueOf(TemplateType.class, rs.getString(10))
                         );
                         Template template = new Template(
                                 UUID.fromString(rs.getString(1)),
@@ -84,9 +84,7 @@ public class TemplateDao {
         }
     }
 
-//    public void main(String[] args) throws Exception{
-//
-//    }
+
 
 
 }
