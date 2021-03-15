@@ -1,0 +1,12 @@
+.ellipse{
+    border-radius: 50%;
+    height: auto;
+    max-width: 100%;
+}
+
+.rounded{
+    border-radius: 8px;
+    height: auto;
+    max-width: 100%;
+}
+

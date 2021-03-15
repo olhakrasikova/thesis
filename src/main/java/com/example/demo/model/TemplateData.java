@@ -58,6 +58,42 @@ public class TemplateData {
         return darkTheme;
     }
 
+    public void setCategory(TemplateCategory category) {
+        this.category = category;
+    }
+
+    public void setImgSrc(String imgSrc) {
+        this.imgSrc = imgSrc;
+    }
+
+    public void setImgStyle(ImgStyle imgStyle) {
+        this.imgStyle = imgStyle;
+    }
+
+    public void setFontSize(int fontSize) {
+        this.fontSize = fontSize;
+    }
+
+    public void setDarkTheme(Boolean darkTheme) {
+        this.darkTheme = darkTheme;
+    }
+
+    public void setTextFontFamily(FontFamily textFontFamily) {
+        this.textFontFamily = textFontFamily;
+    }
+
+    public void setTitleFontFamily(FontFamily titleFontFamily) {
+        this.titleFontFamily = titleFontFamily;
+    }
+
+    public void setFooterFontFamily(FontFamily footerFontFamily) {
+        this.footerFontFamily = footerFontFamily;
+    }
+
+    public void setTemplateType(TemplateType templateType) {
+        this.templateType = templateType;
+    }
+
     public FontFamily getTextFontFamily() {
         return textFontFamily;
     }
