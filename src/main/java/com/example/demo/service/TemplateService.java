@@ -20,7 +20,7 @@ public class TemplateService {
     @Autowired
     public TemplateService(@Qualifier("templateDAO") TemplateDao templateDao) throws Exception {
         this.templateDao = templateDao;
-        generateTemplates();
+//        generateTemplates();
     }
 
     public void addTemplate(TemplateData data) throws Exception {
