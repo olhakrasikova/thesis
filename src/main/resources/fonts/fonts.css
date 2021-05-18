@@ -1,0 +1,127 @@
+@font-face {
+    font-family: 'PermanentMarker-Regular';
+    src: url('PermanentMarker-Regular.ttf')  format('truetype');
+}
+
+@font-face{
+    font-family: 'AmaticSC-Bold' ;
+    src: url("AmaticSC-Bold.ttf") format('truetype');
+}
+
+@font-face{
+    font-family: 'AmaticSC-Regular';
+    src: url("AmaticSC-Regular.ttf") format('truetype');
+}
+
+@font-face{
+    font-family: 'Arvo-Bold';
+    src: url("Arvo-Bold.ttf") format('truetype');
+}
+
+@font-face{
+    font-family: 'Arvo-Italic';
+    src: url("Arvo-Italic.ttf") format('truetype');
+}
+
+@font-face{
+    font-family: 'Arvo-Regular';
+    src: url("Arvo-Regular.ttf") format('truetype');
+}
+
+@font-face{
+    font-family: 'Courgette-Regular';
+    src: url("Courgette-Regular.ttf") format('truetype');
+}
+
+@font-face{
+    font-family: 'GloriaHallelujah-Regular';
+    src: url("GloriaHallelujah-Regular.ttf") format('truetype');
+}
+
+@font-face{
+    font-family: 'NotoSansJP-Black';
+    src: url("NotoSansJP-Black.otf") format('opentype');
+}
+
+@font-face{
+    font-family: 'NotoSansJP-Bold';
+    src: url("NotoSansJP-Bold.otf") format('opentype');
+}
+
+@font-face{
+    font-family: 'NotoSansJP-Light';
+    src: url("NotoSansJP-Light.otf") format('opentype');
+}
+
+@font-face{
+    font-family: 'NotoSansJP-Medium';
+    src: url("NotoSansJP-Medium.otf") format('opentype');
+}
+@font-face{
+    font-family: 'NotoSansJP-Regular';
+    src: url("NotoSansJP-Regular.otf") format('opentype');
+}
+@font-face{
+    font-family: 'NotoSansJP-Thin';
+    src: url("NotoSansJP-Thin.otf") format('opentype');
+}
+@font-face{
+    font-family: 'PottaOne-Regular';
+    src: url("PottaOne-Regular.ttf") format('truetype');
+}
+@font-face{
+    font-family: 'Roboto-BlackItalic';
+    src: url("Roboto-BlackItalic.ttf") format('truetype');
+}
+@font-face{
+    font-family: 'Roboto-Bold';
+    src: url("Roboto-Bold.ttf") format('truetype');
+}
+@font-face{
+    font-family: 'Roboto-Italic';
+    src: url("Roboto-Italic.ttf") format('truetype');
+}
+@font-face{
+    font-family: 'Roboto-Light';
+    src: url("Roboto-Light.ttf") format('truetype');
+}
+@font-face{
+    font-family: 'Roboto-Thin';
+    src: url("Roboto-Thin.ttf") format('truetype');
+}
+@font-face{
+    font-family: 'Roboto-ThinItalic';
+    src: url("Roboto-ThinItalic.ttf") format('truetype');
+}
+@font-face{
+    font-family: 'Satisfy-Regular';
+    src: url("Satisfy-Regular.ttf") format('truetype');
+}
+@font-face{
+    font-family: 'Ubuntu-Bold';
+    src: url("Ubuntu-Bold.ttf") format('truetype');
+}
+@font-face{
+    font-family: 'Ubuntu-BoldItalic';
+    src: url("Ubuntu-BoldItalic.ttf") format('truetype');
+}
+@font-face{
+    font-family: 'Ubuntu-Italic';
+    src: url("Ubuntu-Italic.ttf") format('truetype');
+}@font-face{
+    font-family: 'Ubuntu-Light';
+    src: url("Ubuntu-Light.ttf") format('truetype');
+}@font-face{
+    font-family: 'Ubuntu-LightItalic';
+    src: url("Ubuntu-LightItalic.ttf") format('truetype');
+}@font-face{
+    font-family: 'Ubuntu-Medium';
+    src: url("Ubuntu-Medium.ttf") format('truetype');
+}
+@font-face{
+    font-family: 'Ubuntu-Regular';
+    src: url("Ubuntu-Regular.ttf") format('truetype');
+}
+
+
+

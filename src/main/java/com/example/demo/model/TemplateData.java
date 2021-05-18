@@ -12,8 +12,6 @@ public class TemplateData {
     private FontFamily textFontFamily;
     private FontFamily titleFontFamily;
     private FontFamily footerFontFamily;
-
-
     private TemplateType templateType;
 
     public TemplateData(@JsonProperty("category") TemplateCategory category,
@@ -107,6 +105,6 @@ public class TemplateData {
     }
 
     public TemplateType getTemplateType() {
-        return templateType;
+        return this.templateType;
     }
 }

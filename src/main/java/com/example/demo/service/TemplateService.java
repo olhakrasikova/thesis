@@ -27,8 +27,16 @@ public class TemplateService {
         templateDao.insertTemplate(data);
     }
 
-    public List<Template> getTemplates() throws Exception {
-        return templateDao.readTemplates();
+    public List<Template> getTemplates(int offset, int max) throws Exception {
+        return templateDao.readTemplates(offset, max);
+    }
+
+    public Template getTemplate(String id) throws Exception {
+        return templateDao.readTemplate(id);
+    }
+
+    public int getNumOfRows() throws Exception{
+        return templateDao.getNumberOfRows();
     }
 
     public void generateTemplates() throws Exception {
@@ -41,7 +49,7 @@ public class TemplateService {
                 templateData.setCategory(category);
                 for (imgSrc imgSrc: imgSrc.values())
                 {
-                    templateData.setImgSrc(imgSrc.toString());
+                    templateData.setImgSrc(imgSrc.getFilepath());
                     for (ImgStyle imgStyle: ImgStyle.values())
                     {
                         templateData.setImgStyle(imgStyle);

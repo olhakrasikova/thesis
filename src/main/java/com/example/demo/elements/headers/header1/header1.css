@@ -6,8 +6,3 @@
     font-size: 30px;
     font-family: PermanentMarker-Regular;
 }
-
-@font-face {
-    font-family: 'PermanentMarker-Regular';
-    src: url('PermanentMarker-Regular.ttf')  format('truetype');
-}
