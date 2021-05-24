@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.List;
+import java.util.Map;
 
 import com.jayway.jsonpath.JsonPath;
 
@@ -18,28 +19,28 @@ public class TemplateService {
     private final TemplateDao templateDao;
 
     @Autowired
-    public TemplateService(@Qualifier("templateDAO") TemplateDao templateDao) throws Exception {
+    public TemplateService(@Qualifier("templateDAO") TemplateDao templateDao)  {
         this.templateDao = templateDao;
 //        generateTemplates();
     }
 
-    public void addTemplate(TemplateData data) throws Exception {
+    public void addTemplate(TemplateData data)  {
         templateDao.insertTemplate(data);
     }
 
-    public List<Template> getTemplates(int offset, int max) throws Exception {
-        return templateDao.readTemplates(offset, max);
+    public List<Template> getTemplates(int offset, int max, Map filter)  {
+        return templateDao.readTemplates(offset, max, filter);
     }
 
-    public Template getTemplate(String id) throws Exception {
+    public Template getTemplate(String id)  {
         return templateDao.readTemplate(id);
     }
 
-    public int getNumOfRows() throws Exception{
+    public int getNumOfRows() {
         return templateDao.getNumberOfRows();
     }
 
-    public void generateTemplates() throws Exception {
+    public void generateTemplates()  {
         TemplateData templateData = new TemplateData(TemplateCategory.COOKING, "", ImgStyle.square, 0, FontFamily.ROBOTO, false, FontFamily.ROBOTO, FontFamily.ROBOTO, TemplateType.HORIZONTAL);
 
         for (TemplateType type: TemplateType.values())
@@ -47,22 +48,24 @@ public class TemplateService {
             templateData.setTemplateType(type);
             for (TemplateCategory category : TemplateCategory.values()){
                 templateData.setCategory(category);
-                for (imgSrc imgSrc: imgSrc.values())
+                for (ImgStyle imgStyle: ImgStyle.values())
                 {
-                    templateData.setImgSrc(imgSrc.getFilepath());
-                    for (ImgStyle imgStyle: ImgStyle.values())
+                    templateData.setImgStyle(imgStyle);
+                    templateData.setFontSize(14);
+                    for (FontFamily font: FontFamily.values())
                     {
-                        templateData.setImgStyle(imgStyle);
-                        templateData.setFontSize(14);
-                        for (FontFamily font: FontFamily.values())
+                        templateData.setTextFontFamily(font);
+                        templateData.setTitleFontFamily(font);
+                        templateData.setFooterFontFamily(font);
+                        for (imgSrc imgSrc: imgSrc.values())
                         {
-                            templateData.setTextFontFamily(font);
-                            templateData.setTitleFontFamily(font);
-                            templateData.setFooterFontFamily(font);
+                            templateData.setImgSrc(imgSrc.getFilepath());
                             templateDao.insertTemplate(templateData);
+
                         }
                     }
                 }
+
             }
         }
 

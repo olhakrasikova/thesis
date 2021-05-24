@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import java.sql.*;
@@ -21,8 +22,39 @@ public class TemplateDao {
             "INSERT INTO \"templateData\" (category, imgsrc, imgStyle, fontSize, textFontFamily, " +
                     "darkTheme, titleFontFamily, footerFontFamily, templateType, id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    public String getTemplatesSQLQuery(int offset, int max) {
-        return "SELECT * FROM \"templateData\" OFFSET " + offset + " ROWS FETCH NEXT " + max + " ROWS ONLY";
+    public String getTemplatesSQLQuery(int offset, int max, String category, String type, String font) {
+
+        String request = "SELECT * FROM \"templateData\" ";
+
+        if (!category.toString().equals("") || !type.toString().equals("") || !font.toString().equals("")) {
+            request = request.concat("WHERE ");
+        }
+
+        Boolean wasFilterBefore = false;
+
+        if (!category.toString().equals("")) {
+            wasFilterBefore = true;
+            request = request.concat("category = '"+ category +"' ");
+        }
+
+        if (!type.toString().equals("")) {
+            if (wasFilterBefore) {
+                request = request.concat("AND ");
+            }
+            wasFilterBefore = true;
+            request = request.concat("templateType = '"+ type +"' ");
+        }
+
+        if (!font.toString().equals("")) {
+            if (wasFilterBefore) {
+                request = request.concat("AND ");
+            }
+            request = request.concat("textFontFamily = '"+ font +"' ");
+        }
+
+        request = request.concat("OFFSET " + offset + " ROWS FETCH NEXT " + max + " ROWS ONLY");
+
+        return request;
     }
 
     public String getTemplateSQLQuery(String id) {
@@ -40,10 +72,11 @@ public class TemplateDao {
     }
 
 
-    public void insertTemplate(TemplateData data) throws Exception
+    public void insertTemplate(TemplateData data)
     {
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD)) {
             try(PreparedStatement ps = connection.prepareStatement(INSERT_TEMPLATE)){
+//                System.out.println( data.getCategory());
             ps.setString(1, data.getCategory().toString());
             ps.setString(2, data.getImgSrc());
             ps.setString(3, data.getImgStyle().toString());
@@ -57,15 +90,18 @@ public class TemplateDao {
 
             ps.executeUpdate();
         } } catch (SQLException e) {
-            throw new Exception("Error saving template", e);
+            throw new RuntimeException("Error saving template", e);
         }
     }
 
-    public List<Template> readTemplates(int offset, int max) throws Exception
+    public List<Template> readTemplates(int offset, int max, Map filters)
     {
         List<Template> templates = new ArrayList<>();
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD)) {
-            try(PreparedStatement ps = connection.prepareStatement(this.getTemplatesSQLQuery(offset, max))){
+            String cat = filters.get("category") != null ? filters.get("category").toString() : "";
+            String type = filters.get("templateType") != null ? filters.get("templateType").toString() : "";
+            String font = filters.get("font") != null ? filters.get("font").toString() : "";
+            try(PreparedStatement ps = connection.prepareStatement(this.getTemplatesSQLQuery(offset, max, cat, type, font))){
                 try(ResultSet rs = ps.executeQuery()) {
                     while(rs.next()) {
                         TemplateData data = new TemplateData(
@@ -89,11 +125,11 @@ public class TemplateDao {
                 }
 
             } } catch (SQLException e) {
-            throw new Exception("Error reading templates", e);
+            throw new RuntimeException("Error reading templates", e);
         }
     }
 
-    public Template readTemplate(String id) throws Exception
+    public Template readTemplate(String id)
     {
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD)) {
             try(PreparedStatement ps = connection.prepareStatement(this.getTemplateSQLQuery(id))){
@@ -117,11 +153,11 @@ public class TemplateDao {
                 }
 
             } } catch (SQLException e) {
-            throw new Exception("Error reading template", e);
+            throw new RuntimeException("Error reading template", e);
         }
     }
 
-    public int getNumberOfRows() throws Exception {
+    public int getNumberOfRows()  {
         int i = -1;
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD)) {
             try (PreparedStatement ps = connection.prepareStatement(this.getNumberOfTemp())) {
@@ -132,7 +168,7 @@ public class TemplateDao {
                 }
             }
         } catch (SQLException e) {
-            throw new Exception("Error getting the number of templates" + i, e);
+            throw new RuntimeException("Error getting the number of templates" + i, e);
         }
     }
 
