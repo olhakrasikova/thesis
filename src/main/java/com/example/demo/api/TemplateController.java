@@ -16,7 +16,7 @@ import static java.sql.Types.NULL;
 
 @RequestMapping("api/v1/templates")
 @RestController
-@CrossOrigin//(origins = "http://localhost:8080/")
+@CrossOrigin
 
 public class TemplateController {
 
@@ -35,28 +35,10 @@ public class TemplateController {
     }
 
     @GetMapping
-//    @CrossOrigin(originPatterns = "*")
     @ResponseBody
     public List<Template> getTemplates(@RequestParam("offset") int offset, @RequestParam ("max") int max, @RequestParam("filter") String filters)
     {
 
-
-//        String str =
-//        str = str.replaceAll("category", "");
-//        str = str.replaceAll("templateType", "");
-//        str = str.replaceAll("font", "");
-//
-//        String [] arrayOfFilters = str.split(" ");
-
-//        System.out.println(arrayOfFilters[0]);
-//        System.out.println(arrayOfFilters[1]);
-//        System.out.println(arrayOfFilters[2]);
-
-//        System.out.println(Arrays.toString(arrayOfFilters));
-
-//        String category = arrayOfFilters[0];
-//        String templateType = arrayOfFilters[1];
-//        String font = arrayOfFilters[2];
         Map<String, String> map = new HashMap<>();
 
         System.out.println();
@@ -79,7 +61,6 @@ public class TemplateController {
     }
 
     @GetMapping("/{id}")
-//    @CrossOrigin(originPatterns = "*")
     @ResponseBody
     public Template getTemplate(@PathVariable("id") String id)
     {
