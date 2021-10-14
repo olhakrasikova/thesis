@@ -46,26 +46,22 @@ public class TemplateService {
         for (TemplateType type: TemplateType.values())
         {
             templateData.setTemplateType(type);
-            for (TemplateCategory category : TemplateCategory.values()){
-                templateData.setCategory(category);
-                for (ImgStyle imgStyle: ImgStyle.values())
+            for (ImgStyle imgStyle: ImgStyle.values())
+            {
+                templateData.setImgStyle(imgStyle);
+                templateData.setFontSize(14);
+                for (FontFamily font: FontFamily.values())
                 {
-                    templateData.setImgStyle(imgStyle);
-                    templateData.setFontSize(14);
-                    for (FontFamily font: FontFamily.values())
+                    templateData.setTextFontFamily(font);
+                    templateData.setTitleFontFamily(font);
+                    templateData.setFooterFontFamily(font);
+                    for (imgSrc imgSrc: imgSrc.values())
                     {
-                        templateData.setTextFontFamily(font);
-                        templateData.setTitleFontFamily(font);
-                        templateData.setFooterFontFamily(font);
-                        for (imgSrc imgSrc: imgSrc.values())
-                        {
-                            templateData.setImgSrc(imgSrc.getFilepath());
-                            templateDao.insertTemplate(templateData);
-
-                        }
+                        templateData.setImgSrc(imgSrc.getFilepath());
+                        templateData.setCategory(imgSrc.getCategory());
+                        templateDao.insertTemplate(templateData);
                     }
                 }
-
             }
         }
 
